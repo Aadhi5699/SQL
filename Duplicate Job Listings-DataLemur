@@ -1,0 +1,7 @@
+with job_count AS
+(select company_id,title,description,COUNT(job_id) as job_count
+from job_listings
+group by company_id,title,description)
+
+select COUNT(distinct company_id) as duplicate_companues
+from job_count where job_count >1;
